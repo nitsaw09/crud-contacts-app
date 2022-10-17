@@ -1,4 +1,5 @@
 {
+    "NODE_ENV": "development",
     "DB_CONNECT": "mongodb://localhost:27017/contactsDB",
     "PORT": 3000
 }
