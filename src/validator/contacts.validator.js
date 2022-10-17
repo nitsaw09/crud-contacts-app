@@ -2,12 +2,18 @@ const Joi = require('joi');
 const _ = require('lodash');
 
 const schemas = {
-  contacts: Joi.object().keys({
+  createContact: Joi.object().keys({
     firstName: Joi.string().label('firstName').required(),
     lastName: Joi.string().label('lastName').required(),
     email: Joi.string().email().label('email').required(),
     notes: Joi.string().label('notes').required()
-  })
+  }),
+  updateContact: Joi.object().keys({
+    firstName: Joi.string().label('firstName').required(),
+    lastName: Joi.string().label('lastName').required(),
+    email: Joi.string().email().label('email').required(),
+    notes: Joi.string().label('notes').required()
+  }),
 };
 
 const options = {
@@ -29,16 +35,28 @@ const options = {
   }
 };
 
-module.exports = {
-                                                                                              
-    contacts: (req, res, next) =>
+module.exports = {                                                                                            
+  createContact: (req, res, next) =>
     {
-
-    let schema = schemas.contacts;
+    let schema = schemas.createContact;
     let option = options.basic;
-
-
-    var { error, value } = schema.validate(req.body, option);
+    let { error, value } = schema.validate(req.body, option);
+    if(!_.isEmpty(value)){
+      next()
+    }
+    if(!_.isEmpty(error)){
+      const message = error.details.reduce((prev, curr) => {
+        prev[curr.path[0]] = curr.message.replace(/"/g, '');
+        return prev;
+      }, {});
+      return res.status(401).json({ error: true, message });  
+    }
+  },
+  updateContact: (req, res, next) =>
+    {
+    let schema = schemas.updateContact;
+    let option = options.basic;
+    let { error, value } = schema.validate(req.body, option);
     if(!_.isEmpty(value)){
       next()
     }
