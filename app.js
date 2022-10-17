@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require("mongoose");
 const config = require('config');
+const cors = require('cors');
 
 const contactsRouter = require('./src/routes/contacts.route');
 const swaggerDocs = require('./src/utils/swagger');
@@ -10,6 +11,7 @@ const swaggerDocs = require('./src/utils/swagger');
 const app = express();
 swaggerDocs(app);
 
+app.user(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
