@@ -9,7 +9,7 @@ Modules
 ```npm install```
 
 # Run application
-```npm start``` for production
+```npm start``` for production \
 ```npm run start:dev``` for development
 
 2. Install MongoDB
