@@ -122,10 +122,10 @@ module.exports = {
                 }
             },
         },
-        "/contacts/{cid}": {
+        "/contacts/{id}": {
             parameters: [
                 {
-                  name: "cid",
+                  name: "id",
                   in: "path",
                   description: "ID of contact",
                   required: true,

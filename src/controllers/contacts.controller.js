@@ -38,8 +38,8 @@ exports.getContacts = async (req, res) => {
 
 exports.getContact = async (req, res) => {
     try {
-        const { cid } = req.params;
-        const contact = await contactService.getContact(cid);
+        const { id } = req.params;
+        const contact = await contactService.getContact(id);
         res.status(200).json({ success: true, data: contact });
     } catch (err) {
         res.status(500).json({ error: true, message: err.message });
@@ -61,8 +61,8 @@ exports.createContact = async (req, res) => {
 
 exports.updateContact = async (req, res) => {
     try {
-        const { cid } = req.params;
-        await contactService.updateContact(cid, req.body);
+        const { id } = req.params;
+        await contactService.updateContact(id, req.body);
         res.status(200).json({ 
             success: true,
             message: successMsg.UPDATED_CONTACT  
@@ -75,8 +75,8 @@ exports.updateContact = async (req, res) => {
 
 exports.deleteContact = async (req, res) => {
     try {
-        const { cid } = req.params;
-        await contactService.deleteContact(cid);
+        const { id } = req.params;
+        await contactService.deleteContact(id);
         res.status(200).json({ success: true, message: successMsg.DELETED_CONTACT  });
     } catch (err) {
         res.status(500).json({ error: true, message: err.message });

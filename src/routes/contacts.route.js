@@ -4,9 +4,9 @@ const contactsValidator = require('../validator/contacts.validator');
 const contactsController = require('../controllers/contacts.controller')
 
 router.get('/', contactsController.getContacts);
-router.get('/:cid', contactsController.getContact);
+router.get('/:id', contactsController.getContact);
 router.post('/', contactsValidator.contacts, contactsController.createContact);
-router.put('/:cid', contactsValidator.contacts, contactsController.updateContact);
-router.delete('/:cid', contactsController.deleteContact);
+router.put('/:id', contactsValidator.contacts, contactsController.updateContact);
+router.delete('/:id', contactsController.deleteContact);
 
 module.exports = router;
