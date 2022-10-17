@@ -14,7 +14,7 @@ Modules
 
 2. Install MongoDB
 
-3. Set an environment variable ```DB_CONNECT``` in config/default.json file.
+3. Set an environment variable ```DB_CONNECT``` & ```PORT``` in config/default.json file.
 
 ## Swagger Document
 ```http://localhost:3000/api/doc```
